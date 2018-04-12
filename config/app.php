@@ -150,6 +150,7 @@ return [
         /*
          * Package Service Providers...
          */
+        MihaiBlebea\GenericApp\GenericServiceProvider::class,
 
         /*
          * Application Service Providers...

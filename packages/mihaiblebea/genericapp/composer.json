@@ -1,0 +1,21 @@
+{
+    "name": "serban/genericapp",
+    "description": "This is a generic app scaffolding for Laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Serban Blebea",
+            "email": "slabestecuserban@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MihaiBlebea\\GenericApp\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.1",
+        "illuminate/database": ">=5.0",
+        "illuminate/support": ">=5.0"
+    }
+}
