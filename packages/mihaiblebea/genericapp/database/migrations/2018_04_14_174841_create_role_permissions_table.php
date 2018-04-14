@@ -4,22 +4,22 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserRolesTable extends Migration
+class CreateRolePermissionsTable extends Migration
 {
     public function up()
     {
-        Schema::create('user_roles', function (Blueprint $table) {
+        Schema::create('role_permissions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unique();
             $table->integer('role_id');
+            $table->integer('permission_id');
             $table->timestamps();
 
-            $table->unique(['user_id', 'role_id']);
+            $table->unique(['role_id', 'permission_id']);
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('user_roles');
+        Schema::dropIfExists('role_permissions');
     }
 }

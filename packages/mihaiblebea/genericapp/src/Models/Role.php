@@ -3,6 +3,7 @@
 namespace MihaiBlebea\GenericApp\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use MihaiBlebea\GenericApp\Models\Permission;
 
 class Role extends Model
 {
@@ -11,8 +12,18 @@ class Role extends Model
         'description'
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+
     public function user()
     {
-        return $this->belongsToMany(config('generic.user_model'), 'user_roles')->withTimestamps();
+        return $this->hasMany(config('generic.user_model'));
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class, 'role_permissions')->withTimestamps();
     }
 }
