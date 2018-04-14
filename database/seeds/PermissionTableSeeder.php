@@ -7,13 +7,13 @@ class PermissionTableSeeder extends Seeder
 {
     private $permissions = [
         [
-            'action' => 'can edit'
+            'action' => 'edit'
         ],
         [
-            'action' => 'can approve'
+            'action' => 'approve'
         ],
         [
-            'action' => 'can delete'
+            'action' => 'delete'
         ]
     ];
 

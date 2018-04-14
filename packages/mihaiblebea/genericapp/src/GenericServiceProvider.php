@@ -38,7 +38,7 @@ class GenericServiceProvider extends ServiceProvider
          * Reffer views in the package like so
          * return view('courier::admin');
          */
-         
+
          $this->bootBladeDirectives();
 
     }
@@ -51,10 +51,18 @@ class GenericServiceProvider extends ServiceProvider
     private function bootBladeDirectives()
     {
         Blade::directive('role', function($role) {
-            return "<?php if (auth()->check() && auth()->user()->hasRole({$role})): ?>";
+            return "<?php if (auth()->check() && auth()->user()->hasRole( {$role} )): ?>";
         });
 
-        Blade::directive('endrole', function($role) {
+        Blade::directive('endrole', function() {
+            return '<?php endif; ?>';
+        });
+
+        Blade::directive('can', function($permission) {
+            return "<?php if (auth()->check() && auth()->user()->hasPermissionTo( {$permission} )): ?>";
+        });
+
+        Blade::directive('endcan', function() {
             return '<?php endif; ?>';
         });
     }
