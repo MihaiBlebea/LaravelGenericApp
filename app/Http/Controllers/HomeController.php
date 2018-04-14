@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use MihaiBlebea\GenericApp\Models\Role;
 use Auth;
 
 class HomeController extends Controller
@@ -20,6 +21,8 @@ class HomeController extends Controller
 
     public function test(User $user)
     {
+        $role = Role::find(1);
+        dd($role->user);
         $role = $user->role;
         dd($role);
     }

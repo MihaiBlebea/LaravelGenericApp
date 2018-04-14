@@ -13,6 +13,6 @@ class Role extends Model
 
     public function user()
     {
-        return $this->belongsToMany(User::class, 'user_roles')->withTimestamps();
+        return $this->belongsToMany(config('generic.user_model'), 'user_roles')->withTimestamps();
     }
 }

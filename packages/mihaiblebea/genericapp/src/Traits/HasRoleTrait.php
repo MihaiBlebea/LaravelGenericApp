@@ -2,7 +2,7 @@
 
 namespace MihaiBlebea\GenericApp\Traits;
 
-use MihaiBlebea\GenericApp\Role;
+use MihaiBlebea\GenericApp\Models\Role;
 
 trait HasRoleTrait
 {
