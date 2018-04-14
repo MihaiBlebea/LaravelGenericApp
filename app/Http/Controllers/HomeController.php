@@ -21,9 +21,13 @@ class HomeController extends Controller
 
     public function test(User $user)
     {
-        $role = Role::find(1);
-        dd($role->user);
-        $role = $user->role;
-        dd($role);
+        // $role = Role::find(1);
+        // dd($role->user);
+        $roles = $user->roles;
+        foreach($roles as $role)
+        {
+            var_dump($role->name);
+        }
+        dd($user->hasRole('editor'));
     }
 }
