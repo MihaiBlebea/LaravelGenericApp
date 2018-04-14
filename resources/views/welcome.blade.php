@@ -80,6 +80,9 @@
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
+                    @role('editor')
+                        I am Editor
+                    @endrole
                 </div>
 
                 <div class="links">

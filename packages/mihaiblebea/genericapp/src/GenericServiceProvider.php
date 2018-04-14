@@ -3,6 +3,7 @@
 namespace MihaiBlebea\GenericApp;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 
 class GenericServiceProvider extends ServiceProvider
 {
@@ -13,6 +14,8 @@ class GenericServiceProvider extends ServiceProvider
     private $path_routes = __DIR__ . '/../routes/web.php';
 
     private $path_views = __DIR__ . '/../views';
+
+    private $path_config = __DIR__ . '/../configs/generic.php';
 
     public function boot()
     {
@@ -27,19 +30,32 @@ class GenericServiceProvider extends ServiceProvider
 
         // Publish files from package to main app
         $this->publishes([
-            $this->path_views => resource_path('views/vendor/' . $this->package_name),
-            __DIR__ . '/../configs/generic.php' => config_path('generic.php')
+            $this->path_views  => resource_path('views/vendor/' . $this->package_name),
+            $this->path_config => config_path('generic.php')
         ]);
 
         /*
          * Reffer views in the package like so
          * return view('courier::admin');
          */
+         
+         $this->bootBladeDirectives();
 
     }
 
     public function register()
     {
         //
+    }
+
+    private function bootBladeDirectives()
+    {
+        Blade::directive('role', function($role) {
+            return "<?php if (auth()->check() && auth()->user()->hasRole({$role})): ?>";
+        });
+
+        Blade::directive('endrole', function($role) {
+            return '<?php endif; ?>';
+        });
     }
 }
