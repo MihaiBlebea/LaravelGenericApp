@@ -39,8 +39,7 @@ class GenericServiceProvider extends ServiceProvider
          * return view('courier::admin');
          */
 
-         $this->bootBladeDirectives();
-
+        $this->bootBladeDirectives();
     }
 
     public function register()

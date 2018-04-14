@@ -20,3 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/test/{user}', 'HomeController@test');
+
+Route::get('test-middleware', function() {
+    return 'something';
+})->middleware('role:admin');
