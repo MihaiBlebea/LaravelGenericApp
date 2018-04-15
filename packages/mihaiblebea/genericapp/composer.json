@@ -16,6 +16,7 @@
     "require": {
         "php": ">=7.1",
         "illuminate/database": ">=5.0",
-        "illuminate/support": ">=5.0"
+        "illuminate/support": ">=5.0",
+        "laravel/socialite": "^3.0"
     }
 }
